@@ -1,0 +1,99 @@
+<!--
+*  @FileDescription: Web课程实验作业，被抽到检查作业，写的demo
+*  @Author: 李永晖
+*  @CreatedDate:2021/11/21
+*  @LastEditors: 李永晖
+*  @LastEditTime: 2021/11/21
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="李永晖">
+    <script src="../../vue.js"></script>
+    <script src="../../vue-router.js"></script>
+    <title>VueDemo</title>
+</head>
+<body>
+    <div id="wrap">
+        <div class="left">
+            <div class="title">{{title}}</div>
+            <router-view></router-view>
+        </div>
+        <div class="right">
+            <router-link to="/">你真厉害你真棒</router-link>
+            <router-link to="/cat">猫猫猫猫猫猫猫</router-link>
+        </div>
+    </div>
+    <script type="text/javascript">
+        
+        // 组件
+        const index = {template:'<div><img src="../images/dog.jpg" alt=""></div>'};
+        const another = {template:'<div><img src="../images/cat.gif" alt=""></div>'};
+
+        // 路由
+        const routes = [
+            {
+                path:'/',
+                name:'dog',
+                component:index
+            },
+            {
+                path:'/cat',
+                name:'cat',
+                component:another
+            }
+        ];
+        const router = new VueRouter({
+            mode:'hash',
+            routes
+        })
+
+
+        // vue对象
+        const vue = {
+            el:'#wrap',
+            data:{
+                title:'这是我的web作业，谢谢'
+            },
+            router:router
+        }
+
+        // Vue实例
+        new Vue(vue);
+
+    </script>
+    <style scope>
+        #wrap{
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        img{
+            height: 500px;
+            width: 500px;
+        }
+        .title{
+            margin-bottom: 10px;
+        }
+        .right{
+            display: flex;
+            flex-direction: column;
+            margin-left: 40px;
+        }
+        .router-link-exact-active{
+            color: chocolate;
+        }
+        a{
+            text-decoration: none;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            color: #000;
+        }
+    </style>
+</body>
+</html>
