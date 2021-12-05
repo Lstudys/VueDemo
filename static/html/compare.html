@@ -1,0 +1,55 @@
+<!--
+*  @FileDescription: Web课程实验作业，比较两个数的大小
+*  @Author: 李永晖
+*  @CreatedDate:2021/12/05
+*  @LastEditors: 李永晖
+*  @LastEditTime: 2021/12/05
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="李永晖">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <script src="../../vue.js"></script>
+    <script src="../../vue-router.js"></script>
+    <title>VueDemo</title>
+</head>
+<body>
+    <div id="wrap">
+        <input v-model:value="value1"></input><br/>
+        <input v-model:value="value2"></input><br/>
+        <p>{{value}}比较大</p>
+        <button @click="compare">比较</button>
+    </div>
+    <script type="text/javascript">
+
+        // vue对象
+        const vue = {
+            el:'#wrap',
+            data(){
+                return {
+                    value1:'',// 输入框1
+                    value2:'',// 输入框2
+                    value:'',// 比较大的数
+                }
+            },
+            methods: {
+                compare(){
+                    this.value = this.value1 > this.value2 ? this.value1 : this.value2;
+                }
+            },
+        }
+
+        // Vue实例
+        new Vue(vue);
+
+    </script>
+    <style scope>
+       
+    </style>
+</body>
+</html>
